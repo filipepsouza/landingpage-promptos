@@ -464,10 +464,7 @@ html[data-counts="conservative"] .count-text--confirmed {
   position: relative;
   padding-top: 1.5rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border-subtle);
-  background:
-    radial-gradient(85% 55% at 50% 0%, rgba(159, 32, 51, 0.16) 0%, rgba(13, 14, 17, 0) 100%),
-    var(--bg-main);
+  background: var(--bg-main);
 }
 
 .hero__grid {
@@ -655,6 +652,10 @@ html[data-counts="conservative"] .count-text--confirmed {
   border: 1px solid var(--border-color);
   padding: 1rem;
   border-radius: var(--radius-lg);
+}
+
+.cta-block__trust-pills {
+  display: none;
 }
 
 .cta-block__price-line {
@@ -1896,8 +1897,11 @@ html[data-counts="conservative"] .count-text--confirmed {
 }
 
 /* ==========================================================================
-   SEÇÃO 10 — OFERTA E CTA FINAL
+   SOMBRA DE LED VERMELHO EM TODAS AS SEÇÕES PRETAS A PARTIR DA SEÇÃO 04
    ========================================================================== */
+.section--inside,
+.section--comparison,
+.section--audience,
 .section--offer {
   background:
     radial-gradient(90% 60% at 50% 100%, rgba(159, 32, 51, 0.18) 0%, rgba(13, 14, 17, 0) 100%),
@@ -2296,41 +2300,52 @@ html[data-counts="conservative"] .count-text--confirmed {
 
 .promo-unlock-card {
   position: relative;
+  isolation: isolate;
   width: 100%;
   max-width: 400px;
-  background: linear-gradient(180deg, #191B21 0%, #111318 100%);
-  border: 1px solid rgba(201, 47, 64, 0.65);
+  background: var(--surface-1);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 1.15rem 1.1rem;
   box-shadow:
     0 24px 54px -8px rgba(0, 0, 0, 0.88),
-    0 0 38px -4px rgba(201, 47, 64, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 0 28px -4px rgba(201, 47, 64, 0.32);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  transform: translateY(18px) scale(0.9);
+  transform: translateY(18px) scale(0.92);
   opacity: 0;
   transition:
     transform 0.46s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.34s ease;
-  overflow: hidden;
-}
-
-.promo-unlock-Card::before,
-.promo-unlock-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--red-action), #FF5E70, #22C55E, var(--red-action));
+  overflow: visible;
 }
 
 .promo-unlock-backdrop.is-open .promo-unlock-card {
   transform: translateY(0) scale(1);
   opacity: 1;
+}
+
+/* LED vermelho carregando em volta do card "Promoção Liberada" de forma contínua */
+.promo-unlock-card .card-led-bar {
+  opacity: 1 !important;
+  stroke: var(--red-hover);
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 7px rgba(201, 47, 64, 0.95));
+  transition: none !important;
+  animation: promoCardLedLoop 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes promoCardLedLoop {
+  0% {
+    stroke-dashoffset: var(--perimeter, 1400px);
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: calc(var(--perimeter, 1400px) * -1);
+  }
 }
 
 .promo-unlock-card__top {
@@ -2517,6 +2532,12 @@ html[data-counts="conservative"] .count-text--confirmed {
 /* ==========================================================================
    SEÇÃO 11 — DÚVIDAS FREQUENTES (FAQ) + PISTA DE CORRIDA DOS MASCOTES
    ========================================================================== */
+.section--faq {
+  background: var(--surface-1);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
 .faq-stage {
   max-width: 1180px;
   margin-inline: auto;
@@ -2642,7 +2663,7 @@ html[data-counts="conservative"] .count-text--confirmed {
 }
 
 .faq-item {
-  background: var(--surface-1);
+  background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -2953,12 +2974,12 @@ html[data-counts="conservative"] .count-text--confirmed {
    compactos, sem espaço vazio sobrando e deixando a página mais curta no celular */
 @media (max-width: 767px) {
   :root {
-    --gutter: 0.8rem;
-    --section-py: 2.1rem;
+    --gutter: 0.85rem;
+    --section-py: clamp(3.6rem, 8svh, 4.8rem);
   }
 
   .section-header {
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.45rem;
   }
 
   .section-tag {
@@ -2989,8 +3010,8 @@ html[data-counts="conservative"] .count-text--confirmed {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: auto;
     align-items: stretch;
-    gap: 0.52rem;
-    margin-bottom: 1rem;
+    gap: 0.56rem;
+    margin-bottom: 1.35rem;
   }
 
   .pain-card,
@@ -3297,6 +3318,541 @@ html[data-counts="conservative"] .count-text--confirmed {
   .audience-list li {
     padding-left: 0.82rem;
   }
+
+  /* ========================================================================
+     SEÇÃO 10 (OFERTA FINAL / CTA PRINCIPAL): Proporcional, suave e fluida no Mobile
+     ======================================================================== */
+  .section--offer {
+    min-height: calc(100svh - 62px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: clamp(4.2rem, 9.5svh, 5.8rem);
+    padding-bottom: clamp(4.6rem, 10.5svh, 6.4rem);
+    scroll-margin-top: 62px;
+  }
+
+  .offer-box {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(1rem, 2.2svh, 1.25rem) 0.92rem;
+    border-radius: 14px;
+    gap: clamp(0.68rem, 1.7svh, 0.88rem);
+  }
+
+  .offer-box__top-row {
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .offer-box__top-copy {
+    gap: 0.42rem;
+  }
+
+  .offer-box__badge {
+    font-size: clamp(0.49rem, 2vw, 0.54rem);
+    letter-spacing: 0.04em;
+    padding: 0.22rem 0.56rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .offer-box__title {
+    font-size: clamp(1.1rem, 4.5vw, 1.28rem);
+    line-height: 1.16;
+  }
+
+  .offer-box__mascot-stage {
+    width: clamp(78px, 21vw, 90px);
+    margin-top: 0;
+    margin-right: 0.1rem;
+  }
+
+  .offer-box__subtitle {
+    font-size: clamp(0.75rem, 2.9vw, 0.82rem);
+    line-height: 1.38;
+  }
+
+  .offer-box__summary {
+    padding: 0.72rem 0.76rem;
+    border-radius: 10px;
+  }
+
+  .offer-box__product-name {
+    font-size: 0.86rem;
+    gap: 0.45rem;
+    margin-bottom: 0.48rem;
+    padding-bottom: 0.42rem;
+  }
+
+  .offer-box__avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+  }
+
+  .offer-box__checklist {
+    gap: 0.38rem;
+  }
+
+  .offer-box__checklist li {
+    font-size: clamp(0.71rem, 2.75vw, 0.76rem);
+    line-height: 1.3;
+    gap: 0.42rem;
+  }
+
+  .offer-box__checklist .icon-check {
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+  }
+
+  .offer-box__pricing {
+    max-width: 100%;
+    padding: 0.62rem 0.72rem;
+    border-radius: 10px;
+    gap: 0.16rem;
+  }
+
+  .offer-box__pricing-top {
+    gap: 0.35rem;
+    margin-bottom: 0.04rem;
+  }
+
+  .offer-box__price-label {
+    font-size: 0.57rem;
+  }
+
+  .offer-box__timer-pill {
+    font-size: 0.57rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .offer-box__old-price-row {
+    font-size: 0.7rem;
+  }
+
+  .offer-box__price-main-row {
+    gap: 0.45rem;
+    margin: 0.04rem 0;
+  }
+
+  .offer-box__currency {
+    font-size: 0.9rem;
+  }
+
+  .offer-box__amount {
+    font-size: 1.72rem;
+  }
+
+  .offer-box__discount-card {
+    font-size: 0.58rem;
+    padding: 0.16rem 0.42rem;
+    border-radius: 5px;
+  }
+
+  .offer-box__installments {
+    font-size: 0.75rem;
+  }
+
+  .offer-box__condition {
+    font-size: 0.64rem;
+    margin-top: 0.04rem;
+  }
+
+  .offer-box__action {
+    gap: 0.42rem;
+  }
+
+  .btn-primary--offer {
+    min-height: 48px;
+    padding: 0.65rem 0.95rem;
+    font-size: clamp(0.8rem, 3.1vw, 0.86rem);
+    border-radius: 10px;
+  }
+
+  .offer-box__microcopy {
+    font-size: 0.66rem;
+    line-height: 1.32;
+  }
+
+  /* ==========================================================================
+     HERO & HEADER MOBILE-ONLY REFINEMENTS (<= 767px)
+     1. Remove R$ 47,90 do botão do topo e do card principal do Hero no celular
+     2. Textos e mascote mais para cima + Card CTA à direita ao lado dos 3 benefícios
+     3. Card de preview (.product-preview) em formato horizontal logo abaixo na 1ª página
+     4. Espaçamento amplo ao final da 1ª página para separar da Seção 02
+     ========================================================================== */
+  .header-cta-price,
+  .hero-price-amount {
+    display: none !important;
+  }
+
+  .site-header__cta {
+    min-height: 34px;
+    padding: 0.36rem 0.72rem;
+    font-size: 0.74rem;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding-top: clamp(0.65rem, 1.8svh, 1.15rem);
+    padding-bottom: clamp(4.8rem, 11svh, 6.8rem);
+  }
+
+  .hero__grid {
+    min-height: calc(100svh - 74px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(0.85rem, 2.2svh, 1.35rem);
+  }
+
+  /* Grade de 2 colunas no topo do Hero Mobile:
+     Coluna Esquerda: Eyebrow + Headline + Subheadline + 3 Benefícios
+     Coluna Direita: Polvinho (em cima) + Card CTA (embaixo, ao lado dos 3 benefícios) */
+  .hero__content {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    column-gap: 0.46rem;
+    row-gap: clamp(0.36rem, 0.95svh, 0.52rem);
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  .hero__intro-split,
+  .hero__copy-main {
+    display: contents;
+  }
+
+  .hero .eyebrow {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    justify-self: start;
+    font-size: clamp(0.43rem, 1.8vw, 0.48rem);
+    letter-spacing: 0.025em;
+    padding: 0.22rem 0.48rem;
+    margin-bottom: 0;
+    gap: 0.24rem;
+    white-space: nowrap;
+  }
+
+  .hero .eyebrow__dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .hero__headline {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    font-size: clamp(1.04rem, 4.3vw, 1.24rem);
+    line-height: 1.15;
+    margin-bottom: 0;
+  }
+
+  .hero__subheadline {
+    grid-column: 1 / 2;
+    grid-row: 3;
+    font-size: clamp(0.69rem, 2.75vw, 0.77rem);
+    line-height: 1.36;
+    margin-bottom: 0;
+  }
+
+  .hero__mascot-stage {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    align-self: center;
+    justify-self: center;
+    width: clamp(104px, 28vw, 136px);
+  }
+
+  .hero__benefits {
+    grid-column: 1 / 2;
+    grid-row: 4;
+    align-self: center;
+    gap: clamp(0.32rem, 0.85svh, 0.44rem);
+    margin: 0;
+    padding-top: 0.22rem;
+  }
+
+  .hero__benefit-item {
+    font-size: clamp(0.66rem, 2.6vw, 0.73rem);
+    line-height: 1.26;
+    gap: 0.26rem;
+  }
+
+  .hero__benefit-item .icon-check {
+    width: 13px;
+    height: 13px;
+    margin-top: 0.08rem;
+  }
+
+  .cta-block {
+    grid-column: 2 / 3;
+    grid-row: 4;
+    align-self: center;
+    position: relative;
+    gap: clamp(0.28rem, 0.75svh, 0.38rem);
+    padding: clamp(0.54rem, 1.35svh, 0.68rem) 0.42rem;
+    margin-top: 0.22rem;
+    border-radius: 11px;
+    background:
+      radial-gradient(120% 95% at 50% 0%, rgba(201, 47, 64, 0.18) 0%, rgba(18, 20, 25, 0) 68%),
+      linear-gradient(180deg, rgba(24, 27, 34, 0.98) 0%, rgba(15, 17, 22, 0.98) 100%);
+    border: 1px solid rgba(201, 47, 64, 0.38);
+    box-shadow:
+      0 12px 26px -8px rgba(0, 0, 0, 0.82),
+      0 0 18px -5px rgba(201, 47, 64, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  .cta-block .btn-primary--hero {
+    min-height: 35px;
+    padding: 0.38rem 0.34rem;
+    font-size: clamp(0.47rem, 1.98vw, 0.53rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    border-radius: 8px;
+    gap: 0.18rem;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow:
+      0 6px 16px -3px rgba(201, 47, 64, 0.58),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+
+  .cta-block .btn-primary__arrow {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  .cta-block__trust-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    margin-top: 0;
+  }
+
+  .cta-trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.12rem;
+    padding: 0.09rem 0.24rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    font-size: clamp(0.41rem, 1.65vw, 0.45rem);
+    font-weight: 600;
+    color: #E5E7EB;
+    white-space: nowrap;
+  }
+
+  /* Mantém 2 selos lado a lado em linha única no card compacto da direita */
+  .cta-trust-pill:nth-child(2) {
+    display: none;
+  }
+
+  .cta-block__price-line {
+    font-size: clamp(0.44rem, 1.78vw, 0.49rem);
+    line-height: 1.2;
+    color: #D7DCE5;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+
+  .cta-block__microcopy {
+    font-size: clamp(0.45rem, 1.78vw, 0.5rem);
+    line-height: 1.22;
+    color: var(--text-muted);
+  }
+
+  /* Card "PromptOS Essencial • Editor Guiado" (.product-preview) em formato HORIZONTAL
+     logo abaixo dos textos + CTA na 1ª página do mobile */
+  .hero__visual {
+    width: 100%;
+  }
+
+  .product-preview {
+    border-radius: 11px;
+  }
+
+  .product-preview__topbar {
+    padding: 0.4rem 0.6rem;
+    gap: 0.38rem;
+  }
+
+  .product-preview__dots {
+    gap: 4px;
+  }
+
+  .product-preview__dots span {
+    width: 6px;
+    height: 6px;
+  }
+
+  .product-preview__logo {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+  }
+
+  .product-preview__title {
+    font-size: clamp(0.62rem, 2.45vw, 0.68rem);
+    gap: 0.3rem;
+  }
+
+  .product-preview__tag {
+    font-size: 0.5rem;
+    padding: 0.12rem 0.34rem;
+  }
+
+  .product-preview__search {
+    margin: 0.42rem 0.54rem 0;
+    padding: 0.34rem 0.52rem;
+    border-radius: 6px;
+    gap: 0.38rem;
+  }
+
+  .icon-search {
+    width: 13px;
+    height: 13px;
+  }
+
+  .product-preview__search-text {
+    font-size: clamp(0.64rem, 2.5vw, 0.72rem);
+  }
+
+  .product-preview__badge-match {
+    font-size: 0.5rem;
+    padding: 0.12rem 0.34rem;
+  }
+
+  .product-preview__body {
+    display: grid;
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+    column-gap: 0.46rem;
+    row-gap: 0.3rem;
+    padding: 0.46rem 0.54rem 0.52rem;
+    align-items: stretch;
+  }
+
+  .product-preview__step-label {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    font-size: clamp(0.53rem, 2.1vw, 0.58rem);
+    line-height: 1.18;
+    gap: 0.18rem;
+    align-content: flex-start;
+  }
+
+  .product-preview__compat {
+    font-size: 0.45rem;
+    padding: 0.1rem 0.28rem;
+  }
+
+  .product-preview__fields {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    gap: 0.26rem;
+    align-content: start;
+  }
+
+  .preview-field {
+    padding: 0.26rem 0.38rem;
+    border-radius: 5px;
+    gap: 0.05rem;
+  }
+
+  .preview-field__label {
+    font-size: 0.44rem;
+    letter-spacing: 0.03em;
+  }
+
+  .preview-field__value {
+    font-size: clamp(0.55rem, 2.2vw, 0.62rem);
+    line-height: 1.18;
+  }
+
+  .product-preview__output {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    padding: 0.42rem 0.46rem;
+    border-radius: 6px;
+    gap: 0.28rem;
+    justify-content: space-between;
+  }
+
+  .product-preview__output-header {
+    font-size: clamp(0.53rem, 2.1vw, 0.58rem);
+    line-height: 1.18;
+    gap: 0.22rem;
+  }
+
+  .status-ready {
+    font-size: 0.45rem;
+    padding: 0.1rem 0.28rem;
+    flex-shrink: 0;
+  }
+
+  .product-preview__prompt-snippet {
+    font-size: clamp(0.55rem, 2.2vw, 0.62rem);
+    line-height: 1.3;
+  }
+
+  .product-preview__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+  }
+
+  .preview-copy-btn {
+    min-height: 27px;
+    padding: 0.24rem 0.4rem;
+    font-size: clamp(0.55rem, 2.15vw, 0.61rem);
+    border-radius: 5px;
+    gap: 0.22rem;
+    width: 100%;
+  }
+
+  .preview-copy-btn svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .preview-fav-pill {
+    font-size: 0.49rem;
+    text-align: center;
+  }
+
+  /* Caso a variante B do preview esteja ativa no mobile, mantém horizontal também */
+  .product-preview--demo-b .product-preview__body {
+    display: block;
+  }
+
+  .preview-kit-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.32rem;
+  }
+
+  .preview-kit-item {
+    padding: 0.35rem;
+  }
+
+  .preview-kit-item strong {
+    font-size: 0.54rem;
+  }
+
+  .preview-kit-item p {
+    font-size: 0.48rem;
+    line-height: 1.2;
+  }
 }
 
 /* 390px+ (Standard iPhone / Android viewport) */
@@ -3334,6 +3890,7 @@ html[data-counts="conservative"] .count-text--confirmed {
     --section-py: 4.5rem;
   }
 
+  .header-cta-mobile-word,
   .pain-card--mobile-only,
   .walkthrough-step--mobile-only {
     display: none !important;
@@ -3444,28 +4001,36 @@ html[data-counts="conservative"] .count-text--confirmed {
 }
 
 /* ==========================================================================
-   INTERACTIVE CARDS — SCALE-UP + UNIFORM 100% RED LED BORDER LOADER
-   Carrega suavemente todo o contorno do card de uma ponta até a outra (0% -> 100%)
-   somente quando o usuário passa o mouse (:hover) ou clica/toca (.is-card-active).
+   INTERACTIVE CARDS — CRESCIMENTO LEVE E SUTIL + BORDA LED VERMELHA
+   Cresce suavemente ao passar o mouse no PC (:hover) ou ao tocar/clicar
+   no celular (.is-card-active), sem exagero e em todos os cards do site.
    ========================================================================== */
+.cta-block,
+.product-preview,
+.demo-window,
 .pain-card,
 .positioning-banner,
 .step-card,
 .inside-card,
 .use-case-card,
+.use-cases-closing,
 .comparison-card,
 .included-item,
 .audience-card,
-.walkthrough-step {
+.walkthrough-step,
+.offer-box__summary,
+.offer-box__pricing,
+.faq-item {
   position: relative;
   isolation: isolate;
+  overflow: visible;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    background-color 0.35s ease;
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease;
 }
 
 /* Camada SVG injetada automaticamente em cada card para carregamento 100% uniforme */
@@ -3482,19 +4047,25 @@ html[data-counts="conservative"] .count-text--confirmed {
 .card-led-bar {
   fill: none;
   stroke: var(--red-hover);
-  stroke-width: 2.4px;
+  stroke-width: 2.2px;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: var(--perimeter, 1400px);
   stroke-dashoffset: var(--perimeter, 1400px);
   opacity: 0;
-  filter: drop-shadow(0 0 6px rgba(201, 47, 64, 0.9));
+  filter: drop-shadow(0 0 5px rgba(201, 47, 64, 0.85));
   transition:
     stroke-dashoffset 0.45s ease,
     opacity 0.25s ease;
 }
 
-/* Ativação SOMENTE ao passar o mouse (:hover) ou clicar/tocar (.is-card-active) */
+/* Crescimento leve e sutil ao passar o mouse (PC) ou clicar/tocar (Mobile) */
+.cta-block:hover,
+.cta-block.is-card-active,
+.product-preview:hover,
+.product-preview.is-card-active,
+.demo-window:hover,
+.demo-window.is-card-active,
 .pain-card:hover,
 .pain-card.is-card-active,
 .positioning-banner:hover,
@@ -3505,6 +4076,8 @@ html[data-counts="conservative"] .count-text--confirmed {
 .inside-card.is-card-active,
 .use-case-card:hover,
 .use-case-card.is-card-active,
+.use-cases-closing:hover,
+.use-cases-closing.is-card-active,
 .comparison-card:hover,
 .comparison-card.is-card-active,
 .included-item:hover,
@@ -3512,15 +4085,27 @@ html[data-counts="conservative"] .count-text--confirmed {
 .audience-card:hover,
 .audience-card.is-card-active,
 .walkthrough-step:hover,
-.walkthrough-step.is-card-active {
-  transform: translateY(-4px) scale(1.026);
+.walkthrough-step.is-card-active,
+.offer-box__summary:hover,
+.offer-box__summary.is-card-active,
+.offer-box__pricing:hover,
+.offer-box__pricing.is-card-active,
+.faq-item:hover,
+.faq-item.is-card-active {
+  transform: translateY(-2.5px) scale(1.018) !important;
   box-shadow:
-    0 18px 36px -8px rgba(0, 0, 0, 0.72),
-    0 0 24px -4px rgba(201, 47, 64, 0.35);
+    0 14px 28px -8px rgba(0, 0, 0, 0.68),
+    0 0 18px -4px rgba(201, 47, 64, 0.28);
   z-index: 3;
 }
 
 /* Percorre de uma ponta até a outra completando 100% do card em 1.65s */
+.cta-block:hover .card-led-bar,
+.cta-block.is-card-active .card-led-bar,
+.product-preview:hover .card-led-bar,
+.product-preview.is-card-active .card-led-bar,
+.demo-window:hover .card-led-bar,
+.demo-window.is-card-active .card-led-bar,
 .pain-card:hover .card-led-bar,
 .pain-card.is-card-active .card-led-bar,
 .positioning-banner:hover .card-led-bar,
@@ -3531,6 +4116,8 @@ html[data-counts="conservative"] .count-text--confirmed {
 .inside-card.is-card-active .card-led-bar,
 .use-case-card:hover .card-led-bar,
 .use-case-card.is-card-active .card-led-bar,
+.use-cases-closing:hover .card-led-bar,
+.use-cases-closing.is-card-active .card-led-bar,
 .comparison-card:hover .card-led-bar,
 .comparison-card.is-card-active .card-led-bar,
 .included-item:hover .card-led-bar,
@@ -3538,7 +4125,13 @@ html[data-counts="conservative"] .count-text--confirmed {
 .audience-card:hover .card-led-bar,
 .audience-card.is-card-active .card-led-bar,
 .walkthrough-step:hover .card-led-bar,
-.walkthrough-step.is-card-active .card-led-bar {
+.walkthrough-step.is-card-active .card-led-bar,
+.offer-box__summary:hover .card-led-bar,
+.offer-box__summary.is-card-active .card-led-bar,
+.offer-box__pricing:hover .card-led-bar,
+.offer-box__pricing.is-card-active .card-led-bar,
+.faq-item:hover .card-led-bar,
+.faq-item.is-card-active .card-led-bar {
   opacity: 1;
   stroke-dashoffset: 0;
   transition:
@@ -3565,13 +4158,13 @@ html[data-counts="conservative"] .count-text--confirmed {
    ========================================================================== */
 .scroll-reveal {
   opacity: 0;
-  transform: translate3d(0, 28px, 0) scale(0.985);
+  transform: translate3d(0, 26px, 0) scale(0.985);
   transition:
-    opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-    transform 0.68s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    background-color 0.35s ease;
+    opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease;
   will-change: opacity, transform;
 }
 
@@ -3580,32 +4173,15 @@ html[data-counts="conservative"] .count-text--confirmed {
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-/* Após concluir a entrada, remove o delay inicial para que o hover/clique nos cards seja instantâneo */
+/* Após concluir a entrada, devolve a transição rápida p/ o crescimento sutil no hover/toque */
 .scroll-reveal.is-reveal-done {
   --reveal-delay: 0ms !important;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease;
   will-change: auto;
-}
-
-/* Preserva a elevação do hover/clique nos cards que já surgiram */
-.pain-card.scroll-reveal.is-revealed:hover,
-.pain-card.scroll-reveal.is-revealed.is-card-active,
-.positioning-banner.scroll-reveal.is-revealed:hover,
-.positioning-banner.scroll-reveal.is-revealed.is-card-active,
-.step-card.scroll-reveal.is-revealed:hover,
-.step-card.scroll-reveal.is-revealed.is-card-active,
-.inside-card.scroll-reveal.is-revealed:hover,
-.inside-card.scroll-reveal.is-revealed.is-card-active,
-.use-case-card.scroll-reveal.is-revealed:hover,
-.use-case-card.scroll-reveal.is-revealed.is-card-active,
-.comparison-card.scroll-reveal.is-revealed:hover,
-.comparison-card.scroll-reveal.is-revealed.is-card-active,
-.included-item.scroll-reveal.is-revealed:hover,
-.included-item.scroll-reveal.is-revealed.is-card-active,
-.audience-card.scroll-reveal.is-revealed:hover,
-.audience-card.scroll-reveal.is-revealed.is-card-active,
-.walkthrough-step.scroll-reveal.is-revealed:hover,
-.walkthrough-step.scroll-reveal.is-revealed.is-card-active {
-  transform: translateY(-4px) scale(1.026);
 }
 
 @media (prefers-reduced-motion: reduce) {

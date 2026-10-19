@@ -426,15 +426,23 @@
      ========================================================================== */
   function initInteractiveCards() {
     const cardSelector = [
+      '.cta-block',
+      '.product-preview',
+      '.demo-window',
       '.pain-card',
       '.positioning-banner',
       '.step-card',
       '.inside-card',
       '.use-case-card',
+      '.use-cases-closing',
       '.comparison-card',
       '.included-item',
       '.audience-card',
-      '.walkthrough-step'
+      '.walkthrough-step',
+      '.offer-box__summary',
+      '.offer-box__pricing',
+      '.promo-unlock-card',
+      '.faq-item'
     ].join(', ');
 
     const cards = document.querySelectorAll(cardSelector);
@@ -796,7 +804,7 @@
     const revealSelectors = [
       '.hero__copy-main',
       '.hero__mascot-stage',
-      '.hero__cta-block',
+      '.cta-block',
       '.hero__visual',
       '.section-header',
       '.audience-header-row',
@@ -843,7 +851,7 @@
     const heroSequence = [
       document.querySelector('.hero__copy-main'),
       document.querySelector('.hero__mascot-stage'),
-      document.querySelector('.hero__cta-block'),
+      document.querySelector('.cta-block'),
       document.querySelector('.hero__visual')
     ].filter(Boolean);
 
