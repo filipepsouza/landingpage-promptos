@@ -4059,96 +4059,171 @@ html[data-counts="conservative"] .count-text--confirmed {
     opacity 0.25s ease;
 }
 
-/* Crescimento leve e sutil ao passar o mouse (PC) ou clicar/tocar (Mobile) */
-.cta-block:hover,
-.cta-block.is-card-active,
-.product-preview:hover,
-.product-preview.is-card-active,
-.demo-window:hover,
-.demo-window.is-card-active,
-.pain-card:hover,
-.pain-card.is-card-active,
-.positioning-banner:hover,
-.positioning-banner.is-card-active,
-.step-card:hover,
-.step-card.is-card-active,
-.inside-card:hover,
-.inside-card.is-card-active,
-.use-case-card:hover,
-.use-case-card.is-card-active,
-.use-cases-closing:hover,
-.use-cases-closing.is-card-active,
-.comparison-card:hover,
-.comparison-card.is-card-active,
-.included-item:hover,
-.included-item.is-card-active,
-.audience-card:hover,
-.audience-card.is-card-active,
-.walkthrough-step:hover,
-.walkthrough-step.is-card-active,
-.offer-box__summary:hover,
-.offer-box__summary.is-card-active,
-.offer-box__pricing:hover,
-.offer-box__pricing.is-card-active,
-.faq-item:hover,
-.faq-item.is-card-active {
-  transform: translateY(-2.5px) scale(1.018) !important;
-  box-shadow:
-    0 14px 28px -8px rgba(0, 0, 0, 0.68),
-    0 0 18px -4px rgba(201, 47, 64, 0.28);
-  z-index: 3;
+/* ==========================================================================
+   DESKTOP / TABLET (>= 768px): CRESCIMENTO E CARREGAMENTO LED NO HOVER / CLICK
+   ========================================================================== */
+@media (min-width: 768px) {
+  .cta-block:hover,
+  .cta-block.is-card-active,
+  .product-preview:hover,
+  .product-preview.is-card-active,
+  .demo-window:hover,
+  .demo-window.is-card-active,
+  .pain-card:hover,
+  .pain-card.is-card-active,
+  .positioning-banner:hover,
+  .positioning-banner.is-card-active,
+  .step-card:hover,
+  .step-card.is-card-active,
+  .inside-card:hover,
+  .inside-card.is-card-active,
+  .use-case-card:hover,
+  .use-case-card.is-card-active,
+  .use-cases-closing:hover,
+  .use-cases-closing.is-card-active,
+  .comparison-card:hover,
+  .comparison-card.is-card-active,
+  .included-item:hover,
+  .included-item.is-card-active,
+  .audience-card:hover,
+  .audience-card.is-card-active,
+  .walkthrough-step:hover,
+  .walkthrough-step.is-card-active,
+  .offer-box__summary:hover,
+  .offer-box__summary.is-card-active,
+  .offer-box__pricing:hover,
+  .offer-box__pricing.is-card-active,
+  .faq-item:hover,
+  .faq-item.is-card-active {
+    transform: translateY(-2.5px) scale(1.018) !important;
+    box-shadow:
+      0 14px 28px -8px rgba(0, 0, 0, 0.68),
+      0 0 18px -4px rgba(201, 47, 64, 0.28);
+    z-index: 3;
+  }
+
+  /* Percorre de uma ponta até a outra completando 100% do card em 1.65s no PC */
+  .cta-block:hover .card-led-bar,
+  .cta-block.is-card-active .card-led-bar,
+  .product-preview:hover .card-led-bar,
+  .product-preview.is-card-active .card-led-bar,
+  .demo-window:hover .card-led-bar,
+  .demo-window.is-card-active .card-led-bar,
+  .pain-card:hover .card-led-bar,
+  .pain-card.is-card-active .card-led-bar,
+  .positioning-banner:hover .card-led-bar,
+  .positioning-banner.is-card-active .card-led-bar,
+  .step-card:hover .card-led-bar,
+  .step-card.is-card-active .card-led-bar,
+  .inside-card:hover .card-led-bar,
+  .inside-card.is-card-active .card-led-bar,
+  .use-case-card:hover .card-led-bar,
+  .use-case-card.is-card-active .card-led-bar,
+  .use-cases-closing:hover .card-led-bar,
+  .use-cases-closing.is-card-active .card-led-bar,
+  .comparison-card:hover .card-led-bar,
+  .comparison-card.is-card-active .card-led-bar,
+  .included-item:hover .card-led-bar,
+  .included-item.is-card-active .card-led-bar,
+  .audience-card:hover .card-led-bar,
+  .audience-card.is-card-active .card-led-bar,
+  .walkthrough-step:hover .card-led-bar,
+  .walkthrough-step.is-card-active .card-led-bar,
+  .offer-box__summary:hover .card-led-bar,
+  .offer-box__summary.is-card-active .card-led-bar,
+  .offer-box__pricing:hover .card-led-bar,
+  .offer-box__pricing.is-card-active .card-led-bar,
+  .faq-item:hover .card-led-bar,
+  .faq-item.is-card-active .card-led-bar {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transition:
+      stroke-dashoffset 1.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+      opacity 0.08s ease;
+  }
+
+  /* Destaque sutil no ícone interno quando o card está ativo/hover no PC */
+  .pain-card:hover .pain-card__icon,
+  .pain-card.is-card-active .pain-card__icon,
+  .included-item:hover .included-item__icon,
+  .included-item.is-card-active .included-item__icon {
+    background: var(--red-action);
+    border-color: var(--red-hover);
+    color: #FFFFFF;
+    box-shadow: 0 0 14px rgba(201, 47, 64, 0.5);
+    transition: all 0.28s ease;
+  }
 }
 
-/* Percorre de uma ponta até a outra completando 100% do card em 1.65s */
-.cta-block:hover .card-led-bar,
-.cta-block.is-card-active .card-led-bar,
-.product-preview:hover .card-led-bar,
-.product-preview.is-card-active .card-led-bar,
-.demo-window:hover .card-led-bar,
-.demo-window.is-card-active .card-led-bar,
-.pain-card:hover .card-led-bar,
-.pain-card.is-card-active .card-led-bar,
-.positioning-banner:hover .card-led-bar,
-.positioning-banner.is-card-active .card-led-bar,
-.step-card:hover .card-led-bar,
-.step-card.is-card-active .card-led-bar,
-.inside-card:hover .card-led-bar,
-.inside-card.is-card-active .card-led-bar,
-.use-case-card:hover .card-led-bar,
-.use-case-card.is-card-active .card-led-bar,
-.use-cases-closing:hover .card-led-bar,
-.use-cases-closing.is-card-active .card-led-bar,
-.comparison-card:hover .card-led-bar,
-.comparison-card.is-card-active .card-led-bar,
-.included-item:hover .card-led-bar,
-.included-item.is-card-active .card-led-bar,
-.audience-card:hover .card-led-bar,
-.audience-card.is-card-active .card-led-bar,
-.walkthrough-step:hover .card-led-bar,
-.walkthrough-step.is-card-active .card-led-bar,
-.offer-box__summary:hover .card-led-bar,
-.offer-box__summary.is-card-active .card-led-bar,
-.offer-box__pricing:hover .card-led-bar,
-.offer-box__pricing.is-card-active .card-led-bar,
-.faq-item:hover .card-led-bar,
-.faq-item.is-card-active .card-led-bar {
-  opacity: 1;
-  stroke-dashoffset: 0;
-  transition:
-    stroke-dashoffset 1.65s cubic-bezier(0.22, 0.61, 0.36, 1),
-    opacity 0.08s ease;
+/* ==========================================================================
+   MOBILE ONLY (<= 767px): CARREGAMENTO LED AUTOMÁTICO E SEQUENCIAL NO SCROLL
+   Mesma velocidade e dinâmica da versão PC (1.65s de preenchimento + retorno suave),
+   indo de card em card (1º carrega e para -> 2º carrega e para -> 3º -> 4º...).
+   ========================================================================== */
+@keyframes mobileCardLedSweep {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: var(--perimeter, 1400px);
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  87% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
 }
 
-/* Destaque sutil no ícone interno quando o card está ativo/hover */
-.pain-card:hover .pain-card__icon,
-.pain-card.is-card-active .pain-card__icon,
-.included-item:hover .included-item__icon,
-.included-item.is-card-active .included-item__icon {
-  background: var(--red-action);
-  border-color: var(--red-hover);
-  color: #FFFFFF;
-  box-shadow: 0 0 14px rgba(201, 47, 64, 0.5);
-  transition: all 0.28s ease;
+@media (max-width: 767px) {
+  .card-led-bar {
+    stroke-width: 2.2px;
+    opacity: 0;
+    stroke-dashoffset: var(--perimeter, 1400px);
+    filter: drop-shadow(0 0 5px rgba(201, 47, 64, 0.85));
+    transition: none;
+  }
+
+  /* Card da vez carregando: mesmo crescimento leve e sutil + brilho do PC */
+  .cta-block.is-mobile-led-loading,
+  .product-preview.is-mobile-led-loading,
+  .demo-window.is-mobile-led-loading,
+  .pain-card.is-mobile-led-loading,
+  .positioning-banner.is-mobile-led-loading,
+  .step-card.is-mobile-led-loading,
+  .inside-card.is-mobile-led-loading,
+  .use-case-card.is-mobile-led-loading,
+  .use-cases-closing.is-mobile-led-loading,
+  .comparison-card.is-mobile-led-loading,
+  .included-item.is-mobile-led-loading,
+  .audience-card.is-mobile-led-loading,
+  .walkthrough-step.is-mobile-led-loading,
+  .offer-box__summary.is-mobile-led-loading,
+  .offer-box__pricing.is-mobile-led-loading,
+  .faq-item.is-mobile-led-loading {
+    transform: translateY(-2.5px) scale(1.018) !important;
+    border-color: rgba(201, 47, 64, 0.48);
+    box-shadow:
+      0 14px 28px -8px rgba(0, 0, 0, 0.68),
+      0 0 18px -4px rgba(201, 47, 64, 0.28);
+    z-index: 3;
+  }
+
+  /* 1.65s de preenchimento (idêntico ao PC) + 0.25s para apagar suavemente = 1.9s */
+  .is-mobile-led-loading > .card-led-svg .card-led-bar {
+    animation: mobileCardLedSweep 1.9s forwards;
+  }
+
+  .pain-card.is-mobile-led-loading .pain-card__icon,
+  .included-item.is-mobile-led-loading .included-item__icon {
+    background: var(--red-action);
+    border-color: var(--red-hover);
+    color: #FFFFFF;
+    box-shadow: 0 0 14px rgba(201, 47, 64, 0.5);
+    transition: all 0.28s ease;
+  }
 }
 
 /* ==========================================================================

@@ -503,6 +503,9 @@
       }
 
       card.addEventListener('click', (e) => {
+        // No mobile (<= 767px), o carregamento é 100% automático e sequencial no scroll
+        if (window.innerWidth <= 767) return;
+
         const wasActive = card.classList.contains('is-card-active');
         cards.forEach((c) => c.classList.remove('is-card-active'));
         if (!wasActive) {
@@ -512,10 +515,148 @@
       });
     });
 
-    // Clicar fora de qualquer card desativa o card clicado anteriormente
+    // Clicar fora de qualquer card no PC desativa o card clicado anteriormente
     document.addEventListener('click', () => {
+      if (window.innerWidth <= 767) return;
       cards.forEach((c) => c.classList.remove('is-card-active'));
     });
+
+    /* ------------------------------------------------------------------------
+       CARREGAMENTO LED AUTOMÁTICO E SEQUENCIAL NO MOBILE (<= 767px)
+       À medida que o usuário rola a página no celular, os cards de cada seção
+       fazem o efeito de carregamento um por vez (1º carrega e para -> passa pro
+       2º que carrega e para -> 3º -> 4º...), voltando ao estado original após carregar.
+       ------------------------------------------------------------------------ */
+    const MOBILE_SWEEP_DURATION_MS = 1900;
+    const MOBILE_NEXT_CARD_STEP_MS = 1750;
+    const mqMobile = window.matchMedia('(max-width: 767px)');
+
+    const scrollCardSelector = [
+      '.cta-block',
+      '.product-preview',
+      '.demo-window',
+      '.pain-card',
+      '.positioning-banner',
+      '.step-card',
+      '.inside-card',
+      '.use-case-card',
+      '.use-cases-closing',
+      '.comparison-card',
+      '.included-item',
+      '.audience-card',
+      '.walkthrough-step',
+      '.offer-box__summary',
+      '.offer-box__pricing',
+      '.faq-item'
+    ].join(', ');
+
+    function isCardVisible(card) {
+      if (!card || card.hidden) return false;
+      const style = window.getComputedStyle(card);
+      if (style.display === 'none' || style.visibility === 'hidden') return false;
+      return card.offsetWidth > 2 && card.offsetHeight > 2;
+    }
+
+    const sections = Array.from(document.querySelectorAll('main > section'));
+    const sectionStates = new Map();
+
+    sections.forEach((section) => {
+      const sectionCards = Array.from(section.querySelectorAll(scrollCardSelector));
+      sectionStates.set(section, {
+        allCards: sectionCards,
+        timers: [],
+        hasPlayedInCurrentView: false
+      });
+    });
+
+    function clearSectionSequence(section) {
+      const state = sectionStates.get(section);
+      if (!state) return;
+      state.timers.forEach((t) => window.clearTimeout(t));
+      state.timers = [];
+      state.allCards.forEach((card) => card.classList.remove('is-mobile-led-loading'));
+    }
+
+    function playCardSweep(card, state) {
+      if (!isCardVisible(card) || !mqMobile.matches) return;
+
+      syncCardLedGeometry(card);
+      card.classList.remove('is-mobile-led-loading');
+      void card.offsetWidth;
+      card.classList.add('is-mobile-led-loading');
+
+      const offTimer = window.setTimeout(() => {
+        card.classList.remove('is-mobile-led-loading');
+      }, MOBILE_SWEEP_DURATION_MS);
+
+      state.timers.push(offTimer);
+    }
+
+    function startSectionSequence(section) {
+      if (!mqMobile.matches) return;
+      const state = sectionStates.get(section);
+      if (!state || state.hasPlayedInCurrentView) return;
+
+      const visibleCards = state.allCards.filter((card) => isCardVisible(card));
+      if (visibleCards.length === 0) return;
+
+      state.hasPlayedInCurrentView = true;
+      clearSectionSequence(section);
+
+      visibleCards.forEach((card, index) => {
+        const startAtMs = 200 + index * MOBILE_NEXT_CARD_STEP_MS;
+        const stepTimer = window.setTimeout(() => {
+          playCardSweep(card, state);
+        }, startAtMs);
+        state.timers.push(stepTimer);
+      });
+    }
+
+    function checkMobileSectionsInView() {
+      if (!mqMobile.matches) return;
+      const viewportH = window.innerHeight || document.documentElement.clientHeight;
+
+      sections.forEach((section) => {
+        const state = sectionStates.get(section);
+        if (!state) return;
+
+        const visibleCards = state.allCards.filter((card) => isCardVisible(card));
+        if (visibleCards.length === 0) return;
+
+        const firstRect = visibleCards[0].getBoundingClientRect();
+        const lastRect = visibleCards[visibleCards.length - 1].getBoundingClientRect();
+        const sectionRect = section.getBoundingClientRect();
+
+        // Verifica se a área dos cards da seção está visível na tela do celular
+        const cardsInView =
+          firstRect.top < viewportH * 0.86 &&
+          lastRect.bottom > viewportH * 0.14;
+
+        if (cardsInView && !state.hasPlayedInCurrentView) {
+          startSectionSequence(section);
+        } else if (sectionRect.bottom < -40 || sectionRect.top > viewportH + 40) {
+          // Saiu totalmente da tela: limpa timers pendentes e rearma para caso o usuário volte
+          if (state.hasPlayedInCurrentView) {
+            state.hasPlayedInCurrentView = false;
+            clearSectionSequence(section);
+          }
+        }
+      });
+    }
+
+    let scrollTicking = false;
+    function onMobileScrollOrResize() {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        scrollTicking = false;
+        checkMobileSectionsInView();
+      });
+    }
+
+    window.addEventListener('scroll', onMobileScrollOrResize, { passive: true });
+    window.addEventListener('resize', onMobileScrollOrResize, { passive: true });
+    checkMobileSectionsInView();
   }
 
   function initFAQAndFooter() {
