@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-headline="a" data-demo="a" data-counts="confirmed">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0D0E11" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- SEO & Social Meta -->
+  <title>PromptOS Essencial — Sua Central Organizada de Prompts e Ferramentas Práticas</title>
+  <meta name="description" content="Pare de perder tempo tentando descobrir o que pedir à IA. Encontre, personalize em poucos campos e copie prompts prontos para o seu trabalho no ChatGPT, Gemini ou Claude. Pagamento único, sem mensalidade obrigatória." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://promptos.com.br/essencial" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="PromptOS Essencial — Pare de perder tempo tentando descobrir o que pedir à IA" />
+  <meta property="og:description" content="Central organizada de prompts, kits por profissão e ferramentas guiadas. Personalize em poucos campos, copie e use na sua IA preferida. Acesso imediato com pagamento único." />
+  <meta property="og:url" content="https://promptos.com.br/essencial" />
+  <meta property="og:image" content="./assets/og-promptos-essencial.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PromptOS Essencial — Sua Central de Prompts" />
+  <meta name="twitter:description" content="Encontre, personalize e copie instruções claras para usar no ChatGPT, Gemini ou Claude. Pagamento único, sem mensalidade obrigatória." />
+  <meta name="twitter:image" content="./assets/og-promptos-essencial.svg" />
+
+  <!-- Favicon & Apple Touch Icon (Badge Neon Oficial PromptOS) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-64.png?v=3" />
+  <link rel="shortcut icon" type="image/png" href="./assets/favicon-64.png?v=3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=3" />
+
+  <!-- Google Fonts: Inter & Manrope (Optimized non-blocking load) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css?v=20261019c" />
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Staging Control Bar (For Homologation & A/B Validation) -->
+  <aside class="staging-bar" id="staging-bar" aria-label="Painel de Homologação e Testes A/B">
+    <div class="container staging-bar__inner">
+      <div class="staging-bar__status">
+        <span class="staging-dot" aria-hidden="true"></span>
+        <strong>MODO STAGING</strong>
+        <span class="staging-bar__sep">•</span>
+        <span id="staging-checkout-state">Checkout aguardando URL oficial</span>
+      </div>
+      <div class="staging-bar__controls" role="group" aria-label="Controles de variante de teste">
+        <div class="staging-control">
+          <label for="select-headline">Headline:</label>
+          <select id="select-headline" class="staging-select">
+            <option value="a">Variante A (Principal)</option>
+            <option value="b">Variante B (Teste A/B)</option>
+          </select>
+        </div>
+        <div class="staging-control">
+          <label for="select-demo">Visual Hero:</label>
+          <select id="select-demo" class="staging-select">
+            <option value="a">Demo A (Editor Interativo)</option>
+            <option value="b">Demo B (Busca + Kits)</option>
+          </select>
+        </div>
+        <div class="staging-control">
+          <label for="select-counts">Contagens:</label>
+          <select id="select-counts" class="staging-select">
+            <option value="confirmed">Lançamento (150 / 12 / 8)</option>
+            <option value="conservative">Sem números fixos (Pré-validação)</option>
+          </select>
+        </div>
+        <button type="button" class="staging-hide-btn" id="btn-hide-staging" title="Ocultar barra de homologação para testar tela limpa">
+          Ocultar barra
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Minimal Header -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="#" class="brand" aria-label="PromptOS Essencial - Início">
+        <picture>
+          <source srcset="./assets/logo-badge-header.webp" type="image/webp" />
+          <img
+            src="./assets/logo-badge-header.png"
+            alt="Logo PromptOS"
+            width="160"
+            height="40"
+            class="brand__logo-badge"
+            decoding="async"
+          />
+        </picture>
+      </a>
+      <nav class="site-header__nav" aria-label="Navegação rápida">
+        <a href="#como-funciona" class="site-header__link">Como funciona</a>
+        <a href="#por-dentro" class="site-header__link">Por dentro</a>
+        <a href="#faq" class="site-header__link">Dúvidas</a>
+        <a href="#oferta-final" class="site-header__cta" data-cta-location="header">
+          <span>Acessar Prompt</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <!-- ===================================================================
+         SEÇÃO 01 — HERO: PROBLEMA + PROMESSA + CTA (MOBILE FIRST)
+         =================================================================== -->
+    <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <div class="container hero__grid">
+        <!-- Coluna de Copy e Ação (Vem primeiro no mobile para leitura imediata) -->
+        <div class="hero__content">
+          <div class="hero__intro-split">
+            <div class="hero__copy-main">
+              <div class="eyebrow">
+                <span class="eyebrow__dot" aria-hidden="true"></span>
+                <span>PROMPTS E FERRAMENTAS EM UM SÓ LUGAR</span>
+              </div>
+
+              <!-- Headline A / B -->
+              <h1 class="hero__headline" id="hero-headline">
+                <span class="headline-variant headline-variant--a">
+                  Você abre a IA para ganhar tempo. Não para adivinhar o que pedir.
+                </span>
+                <span class="headline-variant headline-variant--b">
+                  O prompt certo para a sua tarefa — sem perder tempo tentando descobrir como pedir.
+                </span>
+              </h1>
+
+              <p class="hero__subheadline">
+                O PromptOS reúne prompts prontos, organizados por tarefa, e ferramentas para você encontrar o que precisa, adaptar ao seu objetivo e colocar em prática.
+              </p>
+
+              <ul class="hero__benefits" aria-label="Principais benefícios">
+                <li class="hero__benefit-item">
+                  <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Encontre prompts para tarefas reais.</span>
+                </li>
+                <li class="hero__benefit-item">
+                  <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Adapte os pedidos ao seu contexto.</span>
+                </li>
+                <li class="hero__benefit-item">
+                  <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Aproveite as ferramentas do PromptOS.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Mascote Polvinho ao lado dos textos com sombra vermelha e pulo suave -->
+            <div class="hero__mascot-stage" aria-hidden="true">
+              <span class="hero__mascot-glow"></span>
+              <img
+                src="./assets/mascote-polvo-480.png"
+                alt="Mascote Polvo PromptOS"
+                width="220"
+                height="192"
+                class="hero__mascot-img"
+                decoding="async"
+              />
+              <span class="hero__mascot-floor"></span>
+            </div>
+          </div>
+
+          <div class="cta-block" id="hero-cta">
+            <a
+              href="#checkout-action"
+              class="btn-primary btn-primary--hero js-checkout-trigger"
+              data-cta-location="hero"
+              role="button"
+            >
+              <span>QUERO ACESSAR O PROMPTOS</span>
+              <svg class="btn-primary__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="cta-block__trust-pills" aria-hidden="true">
+              <span class="cta-trust-pill">⚡ Acesso imediato</span>
+              <span class="cta-trust-pill">🔒 Pagamento único</span>
+              <span class="cta-trust-pill">✓ 7 dias de garantia</span>
+            </div>
+            <p class="cta-block__price-line">
+              <strong>Pagamento único</strong> • Sem mensalidade obrigatória
+            </p>
+            <p class="cta-block__microcopy">
+              Acesso aos conteúdos do PromptOS Essencial. Ferramentas externas de IA não estão incluídas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Coluna Visual Compacta (Recorte Mobile-First Realista + Slot p/ Screenshot Real) -->
+        <div class="hero__visual" aria-label="Demonstração da interface do PromptOS">
+          <!-- DEMO VISUAL A: Fluxo de Busca -> Personalização -> Copiar -->
+          <div class="product-preview product-preview--demo-a">
+            <div class="product-preview__topbar">
+              <div class="product-preview__dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="product-preview__title">
+                <img src="./assets/favicon-64.png" alt="" width="20" height="20" class="product-preview__logo" decoding="async" />
+                <span>PromptOS Essencial • Editor Guiado</span>
+              </div>
+              <span class="product-preview__tag">IA Compatível</span>
+            </div>
+
+            <!-- Barra de Busca Simulada -->
+            <div class="product-preview__search">
+              <svg class="icon-search" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              <span class="product-preview__search-text">Criar oferta comercial para WhatsApp</span>
+              <span class="product-preview__badge-match">Vendas</span>
+            </div>
+
+            <!-- Campos de Personalização -->
+            <div class="product-preview__body">
+              <div class="product-preview__step-label">
+                <span>1. Preencha os campos do seu negócio</span>
+                <span class="product-preview__compat">ChatGPT • Gemini • Claude</span>
+              </div>
+
+              <div class="product-preview__fields">
+                <div class="preview-field">
+                  <span class="preview-field__label">SEU PRODUTO OU SERVIÇO</span>
+                  <span class="preview-field__value">Consultoria de organização financeira</span>
+                </div>
+                <div class="preview-field">
+                  <span class="preview-field__label">PÚBLICO-ALVO</span>
+                  <span class="preview-field__value">Pequenos lojistas e autônomos</span>
+                </div>
+                <div class="preview-field">
+                  <span class="preview-field__label">OBJETIVO DA MENSAGEM</span>
+                  <span class="preview-field__value">Agendar conversa de diagnóstico sem parecer spam</span>
+                </div>
+              </div>
+
+              <div class="product-preview__output">
+                <div class="product-preview__output-header">
+                  <span>2. Comando estruturado pronto para copiar</span>
+                  <span class="status-ready">Pronto</span>
+                </div>
+                <p class="product-preview__prompt-snippet">
+                  "Atue como especialista em vendas consultivas pelo WhatsApp. Escreva 3 abordagens diretas para <strong>pequenos lojistas e autônomos</strong> sobre <strong>consultoria de organização financeira</strong>, com foco em <strong>agendar diagnóstico</strong> sem usar clichês..."
+                </p>
+                <div class="product-preview__actions">
+                  <button type="button" class="preview-copy-btn" id="hero-demo-copy-btn">
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                      <path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="1.8"/>
+                    </svg>
+                    <span>Testar cópia de comando</span>
+                  </button>
+                  <span class="preview-fav-pill" aria-hidden="true">★ Salvo nos Favoritos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEMO VISUAL B (Alternativa para Teste A/B: Visão de Kits por Profissão) -->
+          <div class="product-preview product-preview--demo-b">
+            <div class="product-preview__topbar">
+              <div class="product-preview__dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="product-preview__title">
+                <img src="./assets/favicon-64.png" alt="" width="20" height="20" class="product-preview__logo" decoding="async" />
+                <span>PromptOS • Biblioteca por Objetivo</span>
+              </div>
+              <span class="product-preview__tag">Organizado</span>
+            </div>
+            <div class="product-preview__body">
+              <div class="preview-kit-list">
+                <div class="preview-kit-item preview-kit-item--active">
+                  <div class="preview-kit-item__head">
+                    <span class="preview-kit-item__badge">Kit Comercial</span>
+                    <span class="preview-kit-item__meta">Sequência prática</span>
+                  </div>
+                  <strong>Atendimento, Proposta e Fechamento</strong>
+                  <p>Da primeira resposta ao cliente até o contorno de objeções e mensagem de acompanhamento.</p>
+                </div>
+                <div class="preview-kit-item">
+                  <div class="preview-kit-item__head">
+                    <span class="preview-kit-item__badge">Kit Conteúdo</span>
+                    <span class="preview-kit-item__meta">Reels, Carrossel e Legenda</span>
+                  </div>
+                  <strong>Planejamento Editorial da Semana</strong>
+                  <p>Estruture pautas, ganchos e roteiros claros adaptados ao seu nicho.</p>
+                </div>
+                <div class="preview-kit-item">
+                  <div class="preview-kit-item__head">
+                    <span class="preview-kit-item__badge">Kit Gestão &amp; Produtividade</span>
+                    <span class="preview-kit-item__meta">Rotina e Processos</span>
+                  </div>
+                  <strong>E-mails, Reuniões e Padronização</strong>
+                  <p>Transforme anotações soltas em planos de ação, atas e comunicados claros.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 02 — IDENTIFICAÇÃO COM A DOR
+         =================================================================== -->
+    <section class="section section--pain" id="problema" aria-labelledby="pain-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">O DESAFIO DE USAR IA NO DIA A DIA</span>
+          <h2 class="section-title" id="pain-title">
+            Você sabe o que quer fazer. Mas nem sempre sabe como pedir.
+          </h2>
+          <p class="section-lead">
+            Você abre o chat, escreve o que vem à cabeça e começa a ajustar a pergunta até a resposta chegar perto do que imaginou. Parece familiar?
+          </p>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain-card">
+            <div class="pain-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pain-card__title">A tela em branco</h3>
+            <p class="pain-card__desc">
+              Você tem a tarefa, mas não sabe como começar o pedido.
+            </p>
+          </article>
+
+          <article class="pain-card">
+            <div class="pain-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M17 14l4 4m0-4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pain-card__title">A resposta genérica</h3>
+            <p class="pain-card__desc">
+              Faltam detalhes, e a IA entrega algo diferente do esperado.
+            </p>
+          </article>
+
+          <article class="pain-card">
+            <div class="pain-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pain-card__title">O retrabalho</h3>
+            <p class="pain-card__desc">
+              Você reformula, procura conversas antigas e começa outra vez.
+            </p>
+          </article>
+
+          <article class="pain-card pain-card--mobile-only">
+            <div class="pain-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pain-card__title">Os pedidos soltos</h3>
+            <p class="pain-card__desc">
+              Seus comandos ficam espalhados e cada tarefa vira uma nova tentativa.
+            </p>
+          </article>
+        </div>
+
+        <!-- Banner de Posicionamento -->
+        <div class="positioning-banner">
+          <p class="positioning-banner__quote">
+            “O PromptOS existe para que você não precise inventar um novo ponto de partida a cada tarefa.”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 03 — MECANISMO: COMO FUNCIONA (4 PASSOS)
+         =================================================================== -->
+    <section class="section section--mechanism" id="como-funciona" aria-labelledby="mechanism-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">SIMPLES DE COMEÇAR</span>
+          <h2 class="section-title" id="mechanism-title">
+            Da tarefa ao prompt pronto para usar. Sem complicação.
+          </h2>
+          <p class="section-lead">
+            Você não precisa dominar técnicas de criação de prompts para começar. O processo é mais simples do que parece.
+          </p>
+        </div>
+
+        <ol class="steps-grid">
+          <li class="step-card">
+            <div class="step-card__num">PASSO 01</div>
+            <h3 class="step-card__title">Escolha sua tarefa</h3>
+            <p class="step-card__text">
+              Encontre a área relacionada ao que você precisa fazer.
+            </p>
+          </li>
+
+          <li class="step-card">
+            <div class="step-card__num">PASSO 02</div>
+            <h3 class="step-card__title">Encontre um prompt</h3>
+            <p class="step-card__text">
+              Parta de uma estrutura preparada para aquela necessidade.
+            </p>
+          </li>
+
+          <li class="step-card">
+            <div class="step-card__num">PASSO 03</div>
+            <h3 class="step-card__title">Adapte os detalhes</h3>
+            <p class="step-card__text">
+              Inclua suas informações, preferências e objetivos.
+            </p>
+          </li>
+
+          <li class="step-card">
+            <div class="step-card__num">PASSO 04</div>
+            <h3 class="step-card__title">Coloque em prática</h3>
+            <p class="step-card__text">
+              Use o pedido em uma ferramenta de IA compatível.
+            </p>
+          </li>
+        </ol>
+
+        <div class="transparency-note" role="note">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10 9v5M10 6.5h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span>
+            <strong>Nota de transparência:</strong> A plataforma reúne, recomenda e personaliza comandos; a execução do prompt acontece na ferramenta de IA escolhida pelo usuário.
+          </span>
+        </div>
+
+        <div class="section-cta">
+          <a href="#checkout-action" class="btn-primary js-checkout-trigger" data-cta-location="mechanism">
+            <span>QUERO CONHECER O PROMPTOS</span>
+            <svg class="btn-primary__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="section-cta__sub">Pagamento único • Acesso ao PromptOS Essencial</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 04 — O PRODUTO POR DENTRO
+         =================================================================== -->
+    <section class="section section--inside" id="por-dentro" aria-labelledby="inside-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CONHEÇA O PROMPTOS</span>
+          <h2 class="section-title" id="inside-title">
+            Não é só ter prompts prontos. É encontrar o que você precisa quando precisa.
+          </h2>
+          <p class="section-lead">
+            Em vez de guardar comandos em arquivos soltos ou procurar entre conversas antigas, tenha uma central com prompts organizados e ferramentas para diferentes necessidades.
+          </p>
+        </div>
+
+        <!-- Navegação por Abas / Cards Mobile-First -->
+        <div class="inside-showcase">
+          <!-- Card 1: Biblioteca -->
+          <article class="inside-card">
+            <div class="inside-card__header">
+              <span class="inside-card__badge">01 • BIBLIOTECA</span>
+              <h3 class="inside-card__title">Encontre prompts pelo que precisa fazer</h3>
+              <p class="inside-card__desc">
+                Localize comandos para vendas, conteúdo, atendimento ou gestão e veja em quais IAs cada opção funciona melhor.
+              </p>
+            </div>
+            <!-- Representação fiel de UI Mobile-Cropped (Substituível por screenshot real em assets/screenshots/) -->
+            <div class="ui-crop" data-screenshot-slot="biblioteca">
+              <div class="ui-crop__bar">
+                <span class="ui-crop__crumb">Biblioteca Principal</span>
+                <span class="ui-crop__pill">Filtros ativos: 2</span>
+              </div>
+              <div class="ui-crop__chips" aria-hidden="true">
+                <span class="ui-chip ui-chip--active">Todas as áreas</span>
+                <span class="ui-chip">Comercial</span>
+                <span class="ui-chip">Conteúdo</span>
+                <span class="ui-chip">Produtividade</span>
+              </div>
+              <div class="ui-crop__item">
+                <div class="ui-crop__item-top">
+                  <strong>Estrutura de Página de Produto e Benefícios</strong>
+                  <span class="ui-tag">ChatGPT / Claude</span>
+                </div>
+                <p>Transforma especificações técnicas em argumentos claros de compra.</p>
+              </div>
+              <div class="ui-crop__item">
+                <div class="ui-crop__item-top">
+                  <strong>Roteiro de Resposta para Cliente Indeciso</strong>
+                  <span class="ui-tag">WhatsApp / Comercial</span>
+                </div>
+                <p>Ajuda a responder objeções de preço e prazo mantendo postura profissional.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Por Profissão -->
+          <article class="inside-card">
+            <div class="inside-card__header">
+              <span class="inside-card__badge">02 • POR PROFISSÃO</span>
+              <h3 class="inside-card__title">Acesse coleções para a sua rotina</h3>
+              <p class="inside-card__desc">
+                Vá direto aos prompts voltados para lojistas, freelancers, criadores de conteúdo, prestadores de serviço e negócios.
+              </p>
+            </div>
+            <div class="ui-crop" data-screenshot-slot="profissoes">
+              <div class="ui-crop__bar">
+                <span class="ui-crop__crumb">Coleções por Profissão</span>
+                <span class="ui-crop__pill">Acesso Rápido</span>
+              </div>
+              <div class="ui-prof-grid">
+                <div class="ui-prof-box">
+                  <strong>Lojistas &amp; E-commerce</strong>
+                  <span>Descrições, campanhas e atendimento</span>
+                </div>
+                <div class="ui-prof-box">
+                  <strong>Freelancers &amp; Autônomos</strong>
+                  <span>Briefing, propostas e cobrança</span>
+                </div>
+                <div class="ui-prof-box">
+                  <strong>Social Media &amp; Criadores</strong>
+                  <span>Pautas, ganchos e calendários</span>
+                </div>
+                <div class="ui-prof-box">
+                  <strong>Gestão &amp; Negócios</strong>
+                  <span>Processos, e-mails e reuniões</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Editor de Prompts -->
+          <article class="inside-card">
+            <div class="inside-card__header">
+              <span class="inside-card__badge">03 • EDITOR DE PROMPTS</span>
+              <h3 class="inside-card__title">Adapte pedidos em campos simples</h3>
+              <p class="inside-card__desc">
+                Prepare pedidos mais completos preenchendo as informações importantes da sua tarefa antes de copiar.
+              </p>
+            </div>
+            <div class="ui-crop" data-screenshot-slot="editor">
+              <div class="ui-crop__bar">
+                <span class="ui-crop__crumb">Personalizador Guiado</span>
+                <span class="ui-crop__pill ui-crop__pill--red">Campos Dinâmicos</span>
+              </div>
+              <div class="ui-editor-preview">
+                <div class="ui-editor-row">
+                  <span class="ui-editor-key">[NICHO]</span>
+                  <span class="ui-editor-val">Clínica Odontológica</span>
+                </div>
+                <div class="ui-editor-row">
+                  <span class="ui-editor-key">[TOM DE VOZ]</span>
+                  <span class="ui-editor-val">Acolhedor, claro e sem jargão técnico</span>
+                </div>
+                <div class="ui-editor-status">
+                  <span>✓ Variáveis aplicadas no comando final</span>
+                  <span class="ui-editor-copy-tag">Copiar</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Kits de Trabalho & Favoritos -->
+          <article class="inside-card">
+            <div class="inside-card__header">
+              <span class="inside-card__badge">04 • KITS &amp; FAVORITOS</span>
+              <h3 class="inside-card__title">Siga etapas prontas e salve favoritos</h3>
+              <p class="inside-card__desc">
+                Use kits passo a passo para demandas em etapas e guarde seus prompts mais utilizados nos Favoritos.
+              </p>
+            </div>
+            <div class="ui-crop" data-screenshot-slot="kits-favoritos">
+              <div class="ui-crop__bar">
+                <span class="ui-crop__crumb">Kits + Favoritos</span>
+                <span class="ui-crop__pill">Fluxo Contínuo</span>
+              </div>
+              <div class="ui-sequence">
+                <div class="ui-sequence__step">
+                  <span class="ui-sequence__num">Etapa 1</span>
+                  <span>Definir argumento central da oferta</span>
+                </div>
+                <div class="ui-sequence__step">
+                  <span class="ui-sequence__num">Etapa 2</span>
+                  <span>Criar roteiro de anúncio / post</span>
+                </div>
+                <div class="ui-sequence__step">
+                  <span class="ui-sequence__num">Etapa 3</span>
+                  <span>Gerar script de resposta para interessados</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 05 — CASOS DE USO QUE ATRAEM COMPRADORES
+         =================================================================== -->
+    <section class="section section--use-cases" id="casos-de-uso" aria-labelledby="use-cases-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">ENCONTRE O QUE PRECISA</span>
+          <h2 class="section-title" id="use-cases-title">
+            O que você precisa resolver hoje?
+          </h2>
+          <p class="section-lead">
+            Um conteúdo para criar? Algo para organizar? Uma ideia para desenvolver? Explore as áreas do PromptOS e encontre recursos que podem ajudar na sua próxima tarefa.
+          </p>
+        </div>
+
+        <div class="use-cases-grid">
+          <article class="use-case-card">
+            <div class="use-case-card__top">
+              <span class="use-case-card__role">Lojista</span>
+              <span class="use-case-card__area">Comércio &amp; Vendas</span>
+            </div>
+            <p class="use-case-card__text">
+              Prepare descrições de produtos, ideias de campanhas, roteiros de anúncios e mensagens comerciais para WhatsApp.
+            </p>
+          </article>
+
+          <article class="use-case-card">
+            <div class="use-case-card__top">
+              <span class="use-case-card__role">Social media</span>
+              <span class="use-case-card__area">Conteúdo &amp; Redes</span>
+            </div>
+            <p class="use-case-card__text">
+              Desenvolva pautas, ideias de Reels, carrosséis, legendas e organize seu calendário de publicações.
+            </p>
+          </article>
+
+          <article class="use-case-card">
+            <div class="use-case-card__top">
+              <span class="use-case-card__role">Freelancer</span>
+              <span class="use-case-card__area">Serviços &amp; Clientes</span>
+            </div>
+            <p class="use-case-card__text">
+              Monte perguntas de briefing, estruture propostas comerciais, alinhe escopos e facilite o atendimento a clientes.
+            </p>
+          </article>
+
+          <article class="use-case-card">
+            <div class="use-case-card__top">
+              <span class="use-case-card__role">Empreendedor</span>
+              <span class="use-case-card__area">Negócios &amp; Estratégia</span>
+            </div>
+            <p class="use-case-card__text">
+              Organize ideias de ofertas, estruture argumentos de venda, mapeie necessidades do público e planeje ações práticas.
+            </p>
+          </article>
+
+          <article class="use-case-card">
+            <div class="use-case-card__top">
+              <span class="use-case-card__role">Gestor</span>
+              <span class="use-case-card__area">Operação &amp; Equipe</span>
+            </div>
+            <p class="use-case-card__text">
+              Padronize checklists, organize processos internos, resuma reuniões e alinhe atividades com mais clareza.
+            </p>
+          </article>
+
+          <article class="use-case-card">
+            <div class="use-case-card__top">
+              <span class="use-case-card__role">Profissional</span>
+              <span class="use-case-card__area">Rotina &amp; Escritório</span>
+            </div>
+            <p class="use-case-card__text">
+              Redija e-mails importantes, organize apresentações, estruture tarefas da semana e ganhe praticidade no trabalho.
+            </p>
+          </article>
+        </div>
+
+        <p class="use-cases-closing">
+          Escolha uma área e veja as possibilidades disponíveis para começar sua próxima tarefa.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 06 — ANTES E DEPOIS (DEMONSTRAÇÃO REAL INTERATIVA)
+         =================================================================== -->
+    <section class="section section--comparison" id="antes-e-depois" aria-labelledby="comparison-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">VEJA NA PRÁTICA</span>
+          <h2 class="section-title" id="comparison-title">
+            Um pedido genérico. Outro com contexto. Veja a diferença.
+          </h2>
+          <p class="section-lead">
+            A tarefa pode ser a mesma. Mas explicar o objetivo, os detalhes e o resultado esperado muda a maneira como você orienta a IA. <strong>Não é sobre escrever mais. É sobre dar à IA as informações que realmente importam.</strong>
+          </p>
+        </div>
+
+        <!-- Seletor de Exemplo para o Usuário Testar no Celular -->
+        <div class="scenario-switcher" role="tablist" aria-label="Escolha um exemplo prático para comparar">
+          <button
+            type="button"
+            class="scenario-btn is-active"
+            role="tab"
+            aria-selected="true"
+            data-scenario="loja"
+          >
+            Loja de Roupas
+          </button>
+          <button
+            type="button"
+            class="scenario-btn"
+            role="tab"
+            aria-selected="false"
+            data-scenario="servico"
+          >
+            Prestador de Serviço
+          </button>
+          <button
+            type="button"
+            class="scenario-btn"
+            role="tab"
+            aria-selected="false"
+            data-scenario="b2b"
+          >
+            Proposta Comercial
+          </button>
+        </div>
+
+        <div class="comparison-grid">
+          <!-- ANTES: Pedido Genérico -->
+          <div class="comparison-card comparison-card--before">
+            <div class="comparison-card__header">
+              <span class="comparison-badge comparison-badge--before">SEM CONTEXTO • PEDIDO GENÉRICO</span>
+            </div>
+            <div class="comparison-card__box">
+              <p class="comparison-card__prompt" id="before-prompt-text">
+                “Crie um post legal para minha loja de roupas para eu postar hoje no Instagram e atrair clientes.”
+              </p>
+            </div>
+            <ul class="comparison-card__list">
+              <li>Não informa nicho, público nem objetivo real.</li>
+              <li>A IA tenta adivinhar o que você precisa.</li>
+              <li>Exige várias reformulações manuais.</li>
+            </ul>
+            <div class="comparison-card__footer">
+              <p class="comparison-card__note">
+                Sem contexto, você perde tempo tentando ajustar a resposta.
+              </p>
+              <span class="comparison-status-bad" aria-hidden="true">
+                ✕ Resposta genérica
+              </span>
+            </div>
+          </div>
+
+          <!-- DEPOIS: Com PromptOS -->
+          <div class="comparison-card comparison-card--after">
+            <div class="comparison-card__header">
+              <span class="comparison-badge comparison-badge--after">COM CONTEXTO • PEDIDO PREPARADO</span>
+            </div>
+            <div class="comparison-card__box">
+              <p class="comparison-card__prompt" id="after-prompt-text">
+                Atue como estrategista de <mark>[Moda Feminina]</mark>. Crie 3 posts sobre <mark>[alfaiataria confortável]</mark> para <mark>[mulheres de 28–45 anos]</mark> focados em <mark>[vendas no Direct]</mark>, com gancho e CTA.
+              </p>
+            </div>
+            <ul class="comparison-card__list comparison-card__list--after">
+              <li>Define papel, público-alvo e objetivo claro.</li>
+              <li>Campos destacados simples de adaptar.</li>
+              <li>Orienta a IA com as informações que importam.</li>
+            </ul>
+            <div class="comparison-card__footer">
+              <p class="comparison-card__note">
+                Os trechos destacados são preenchidos por você em campos simples antes de copiar.
+              </p>
+              <button type="button" class="btn-secondary-copy" id="btn-copy-comparison">
+                Copiar este exemplo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 07 — TUDO O QUE VOCÊ RECEBE
+         =================================================================== -->
+    <section class="section section--included" id="o-que-inclui" aria-labelledby="included-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">TUDO EM UM SÓ LUGAR</span>
+          <h2 class="section-title" id="included-title">
+            Seus prompts e ferramentas, sem ficar pulando de um lugar para outro.
+          </h2>
+          <p class="section-lead">
+            O PromptOS reúne diferentes recursos para você consultar, preparar e personalizar pedidos conforme a tarefa. Tudo em uma única plataforma.
+          </p>
+        </div>
+
+        <div class="included-grid">
+          <article class="included-item">
+            <div class="included-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="1.8"/>
+                <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="included-item__content">
+              <h3 class="included-item__title">
+                <span class="count-text count-text--confirmed">150 prompts organizados por objetivo</span>
+                <span class="count-text count-text--conservative">Biblioteca de prompts organizados por objetivo</span>
+              </h3>
+              <p class="included-item__desc">
+                Encontre o ponto de partida certo para criar conteúdos, vender, atender clientes e organizar o trabalho sem improvisar.
+              </p>
+            </div>
+          </article>
+
+          <article class="included-item">
+            <div class="included-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M3 10h18M9 10v10" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div class="included-item__content">
+              <h3 class="included-item__title">
+                <span class="count-text count-text--confirmed">12 coleções e kits por profissão/objetivo</span>
+                <span class="count-text count-text--conservative">Coleções e kits organizados por profissão e tarefa</span>
+              </h3>
+              <p class="included-item__desc">
+                Siga sequências práticas de comandos para resolver demandas completas da sua área sem começar do zero.
+              </p>
+            </div>
+          </article>
+
+          <article class="included-item">
+            <div class="included-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div class="included-item__content">
+              <h3 class="included-item__title">
+                <span class="count-text count-text--confirmed">8 mini ferramentas guiadas</span>
+                <span class="count-text count-text--conservative">Mini ferramentas guiadas para montagem rápida</span>
+              </h3>
+              <p class="included-item__desc">
+                Prepare pedidos específicos passo a passo com orientações ajustadas ao objetivo da sua tarefa.
+              </p>
+            </div>
+          </article>
+
+          <article class="included-item">
+            <div class="included-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="included-item__content">
+              <h3 class="included-item__title">Busca contextual e personalização</h3>
+              <p class="included-item__desc">
+                Localize recursos pelo que você precisa fazer e adapte as informações importantes em campos claros antes de copiar.
+              </p>
+            </div>
+          </article>
+
+          <article class="included-item">
+            <div class="included-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="included-item__content">
+              <h3 class="included-item__title">Exemplos de uso, favoritos e botão de copiar</h3>
+              <p class="included-item__desc">
+                Veja como aplicar cada comando, guarde os recursos mais úteis nos Favoritos e copie com um clique no celular ou PC.
+              </p>
+            </div>
+          </article>
+
+          <article class="included-item">
+            <div class="included-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="included-item__content">
+              <h3 class="included-item__title">Compra única e acesso vitalício aos conteúdos adquiridos</h3>
+              <p class="included-item__desc">
+                Consulte a plataforma quando precisar, sem mensalidade obrigatória pelo PromptOS Essencial, conforme os termos de uso.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-cta">
+          <a href="#checkout-action" class="btn-primary js-checkout-trigger" data-cta-location="included">
+            <span>QUERO ACESSAR O PROMPTOS</span>
+            <svg class="btn-primary__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="section-cta__sub">Pagamento único • Sem mensalidade obrigatória</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 08 — PARA QUEM É / PARA QUEM NÃO É
+         =================================================================== -->
+    <section class="section section--audience" id="para-quem-e" aria-labelledby="audience-title">
+      <div class="container">
+        <div class="audience-header-row">
+          <div class="section-header">
+            <span class="section-tag">FEITO PARA USAR NA PRÁTICA</span>
+            <h2 class="section-title" id="audience-title">
+              Feito para quem quer usar IA na prática. Não ficar só na tentativa.
+            </h2>
+            <p class="section-lead">
+              Seja para criar, estudar, planejar ou cuidar das tarefas do dia a dia, o PromptOS foi pensado para quem quer ter recursos mais fáceis de encontrar e utilizar.
+            </p>
+          </div>
+
+          <!-- Mascote Polvo girando em 360º com sombra vermelha no canto superior direito -->
+          <div class="audience-mascot-box" aria-hidden="true">
+            <span class="audience-mascot__glow"></span>
+            <img
+              src="./assets/mascote-polvo-480.png"
+              alt=""
+              width="148"
+              height="129"
+              class="audience-mascot__img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <div class="audience-grid">
+          <!-- Para quem é -->
+          <div class="audience-card audience-card--yes">
+            <h3 class="audience-card__title">
+              <span class="audience-icon audience-icon--yes" aria-hidden="true">✓</span>
+              <span>O PromptOS faz sentido para você se...</span>
+            </h3>
+            <ul class="audience-list">
+              <li>Você utiliza IA para tarefas reais.</li>
+              <li>Você quer encontrar prompts sem criar tudo do zero.</li>
+              <li>Você prefere ter recursos organizados em um só lugar.</li>
+              <li>Você gosta de adaptar ferramentas às suas necessidades.</li>
+              <li>Você quer aproveitar melhor as possibilidades da IA.</li>
+            </ul>
+          </div>
+
+          <!-- Para quem não é -->
+          <div class="audience-card audience-card--no">
+            <h3 class="audience-card__title">
+              <span class="audience-icon audience-icon--no" aria-hidden="true">✕</span>
+              <span>O PromptOS não é para você se...</span>
+            </h3>
+            <ul class="audience-list">
+              <li>Você espera que a IA execute tudo automaticamente.</li>
+              <li>Você procura uma inteligência artificial independente.</li>
+              <li>Você não quer adaptar pedidos ou revisar resultados.</li>
+              <li>Você espera resultados perfeitos e garantidos sem participação.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 09 — DEMONSTRAÇÃO DETALHADA DE USO REAL
+         =================================================================== -->
+    <section class="section section--walkthrough" id="demonstracao-real" aria-labelledby="walkthrough-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">VEJA COMO FUNCIONA</span>
+          <h2 class="section-title" id="walkthrough-title">
+            Veja o PromptOS funcionando em uma tarefa real.
+          </h2>
+          <p class="section-lead">
+            Da escolha do recurso à preparação do pedido: acompanhe como a plataforma pode ser utilizada em uma situação do dia a dia.
+          </p>
+        </div>
+
+        <div class="walkthrough-timeline">
+          <div class="walkthrough-step">
+            <div class="walkthrough-step__time">ETAPA 01 • A Demanda</div>
+            <h3 class="walkthrough-step__title">Escolha da tarefa por objetivo</h3>
+            <p class="walkthrough-step__desc">
+              Para reativar orçamentos parados no WhatsApp, seleciona na busca a área <strong>Comercial &amp; Fechamento</strong>.
+            </p>
+          </div>
+
+          <div class="walkthrough-step">
+            <div class="walkthrough-step__time">ETAPA 02 • A Adaptação</div>
+            <h3 class="walkthrough-step__title">Preenchimento de 4 variáveis</h3>
+            <p class="walkthrough-step__desc">
+              No editor guiado, inclui: <em>Serviço</em>, <em>Objeção comum</em>, <em>Condição</em> e <em>Tom da conversa</em>.
+            </p>
+          </div>
+
+          <div class="walkthrough-step">
+            <div class="walkthrough-step__time">ETAPA 03 • A Aplicação</div>
+            <h3 class="walkthrough-step__title">Cópia e uso na IA</h3>
+            <p class="walkthrough-step__desc">
+              Clica em <strong>Copiar Prompt</strong>, cola no ChatGPT ou Claude e recebe opções de mensagem para adaptar.
+            </p>
+          </div>
+
+          <div class="walkthrough-step walkthrough-step--mobile-only">
+            <div class="walkthrough-step__time">ETAPA 04 • O Favorito</div>
+            <h3 class="walkthrough-step__title">Salvo para reutilizar sempre</h3>
+            <p class="walkthrough-step__desc">
+              Guarda o comando nos <strong>Favoritos</strong> para consultar novamente quando surgir a mesma demanda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 10 — OFERTA E CTA FINAL
+         =================================================================== -->
+    <section class="section section--offer" id="oferta-final" aria-labelledby="offer-title">
+      <div class="container">
+        <div class="offer-box">
+          <div class="offer-box__top-row">
+            <div class="offer-box__top-copy">
+              <div class="offer-box__badge">SEU ACESSO AO PROMPTOS</div>
+              <h2 class="offer-box__title" id="offer-title">
+                Tudo o que você viu, em um único acesso.
+              </h2>
+            </div>
+
+            <!-- Mascote Polvo no canto superior direito do card de oferta (pulando com sombra vermelha) -->
+            <div class="offer-box__mascot-stage" aria-hidden="true">
+              <span class="offer-box__mascot-glow"></span>
+              <img
+                src="./assets/mascote-polvo-480.png"
+                alt=""
+                width="126"
+                height="110"
+                class="offer-box__mascot-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="offer-box__mascot-floor"></span>
+            </div>
+          </div>
+
+          <p class="offer-box__subtitle">
+            Tenha seus prompts e ferramentas reunidos em uma plataforma para consultar quando surgir uma nova tarefa, adaptar ao que precisa e começar com mais clareza.
+          </p>
+
+          <div class="offer-box__summary">
+            <div class="offer-box__product-name">
+              <img src="./assets/logo-160.png" alt="" width="30" height="30" class="offer-box__avatar" loading="lazy" decoding="async" />
+              <span>PromptOS Essencial</span>
+            </div>
+            <ul class="offer-box__checklist">
+              <li>
+                <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Biblioteca de prompts organizados por objetivo e profissão</span>
+              </li>
+              <li>
+                <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Recursos de personalização em campos, exemplos práticos e Favoritos</span>
+              </li>
+              <li>
+                <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Kits de trabalho e mini ferramentas guiadas disponíveis na plataforma</span>
+              </li>
+              <li>
+                <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Direito legal de arrependimento em até 7 dias conforme o Código de Defesa do Consumidor</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="offer-box__pricing" id="offer-pricing-card">
+            <div class="offer-box__pricing-top">
+              <span class="offer-box__price-label">Oferta Especial Liberada</span>
+              <span class="offer-box__timer-pill" id="offer-inline-timer-wrap">
+                <span class="offer-box__timer-dot" aria-hidden="true"></span>
+                <span>Expira em <strong data-promo-timer>09:59</strong></span>
+              </span>
+            </div>
+
+            <div class="offer-box__old-price-row">
+              <span>De</span>
+              <del class="offer-box__old-price">R$ 199,90</del>
+              <span>por apenas:</span>
+            </div>
+
+            <div class="offer-box__price-main-row">
+              <div class="offer-box__price-value">
+                <span class="offer-box__currency">R$</span>
+                <span class="offer-box__amount">47,90</span>
+              </div>
+              <span class="offer-box__discount-card" aria-label="76 por cento de desconto">
+                76% OFF
+              </span>
+            </div>
+
+            <p class="offer-box__installments">
+              ou dividir em até <strong>12x de R$ 3,99</strong>
+            </p>
+
+            <p class="offer-box__condition">
+              Pagamento único • Sem mensalidade obrigatória
+            </p>
+          </div>
+
+          <div class="offer-box__action">
+            <a
+              href="#checkout-action"
+              class="btn-primary btn-primary--offer js-checkout-trigger"
+              data-cta-location="offer-final"
+              role="button"
+            >
+              <span>QUERO MEU ACESSO AO PROMPTOS</span>
+              <svg class="btn-primary__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="offer-box__microcopy">
+              O pagamento será concluído em ambiente de checkout seguro. A liberação do acesso ocorre após a confirmação do pagamento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 11 — DÚVIDAS FREQUENTES (FAQ)
+         =================================================================== -->
+    <section class="section section--faq" id="faq" aria-labelledby="faq-title">
+      <div class="faq-stage">
+        <!-- Pista Esquerda: Mascote Polvo Apostando Corrida -->
+        <div class="faq-racer-track faq-racer-track--left" aria-hidden="true">
+          <div class="faq-racer faq-racer--left">
+            <span class="faq-racer__glow"></span>
+            <img
+              src="./assets/mascote-polvo-480.png"
+              alt=""
+              width="130"
+              height="113"
+              class="faq-racer__img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <div class="container container--narrow faq-stage__center">
+          <div class="section-header">
+            <span class="section-tag">TIRE SUAS DÚVIDAS</span>
+            <h2 class="section-title" id="faq-title">
+              Ainda tem dúvidas? Veja como funciona.
+            </h2>
+            <p class="section-lead">
+              Respostas diretas para você entender o que está comprando e como aproveitar o PromptOS.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>O que é o PromptOS?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  O PromptOS é uma plataforma que reúne prompts organizados e ferramentas para ajudar você a preparar pedidos e aproveitar melhor os recursos de inteligência artificial.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>Preciso saber criar prompts?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  Não precisa ser especialista. O PromptOS oferece estruturas e ferramentas que você pode consultar e adaptar às suas necessidades.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>O PromptOS é uma inteligência artificial própria?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  Não. O PromptOS funciona como uma central de recursos para ajudar você a preparar e organizar a utilização de ferramentas de inteligência artificial (como ChatGPT, Gemini ou Claude).
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>Por que comprar o PromptOS se posso pedir prompts ao ChatGPT?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  Você pode criar seus próprios prompts com ferramentas de IA. A diferença é que o PromptOS reúne uma biblioteca organizada e recursos de apoio para você não precisar pesquisar, preparar e organizar tudo do zero. Você parte de estruturas existentes e adapta ao que precisa.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>O que está incluído na compra e posso usar no celular?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  Você recebe acesso à biblioteca de prompts por objetivo e profissão, kits de trabalho, mini ferramentas guiadas, editor de personalização e Favoritos. A plataforma funciona no navegador tanto no celular quanto no computador.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>O pagamento é único e como recebo meu acesso?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  Sim, a oferta do PromptOS Essencial é de pagamento único, sem mensalidade obrigatória. Após a confirmação do pagamento, as instruções de acesso são enviadas para o e-mail cadastrado no checkout.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                <span>Existe garantia e como funciona o suporte?</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-item__answer">
+                <p>
+                  Sim. Aplica-se o direito legal de arrependimento em até 7 dias corridos a partir da compra (Art. 49 do Código de Defesa do Consumidor). Para dúvidas ou solicitação de reembolso no prazo legal, basta acionar o canal oficial de suporte informado no rodapé.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- Pista Direita: Mascote Polvo Apostando Corrida -->
+        <div class="faq-racer-track faq-racer-track--right" aria-hidden="true">
+          <div class="faq-racer faq-racer--right">
+            <span class="faq-racer__glow"></span>
+            <img
+              src="./assets/mascote-polvo-480.png"
+              alt=""
+              width="130"
+              height="113"
+              class="faq-racer__img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       SEÇÃO 12 — RODAPÉ COMERCIAL E REGULATÓRIO
+       ===================================================================== -->
+  <footer class="site-footer" id="footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="brand">
+            <picture>
+              <source srcset="./assets/logo-badge-header.webp" type="image/webp" />
+              <img
+                src="./assets/logo-badge-header.png"
+                alt="Logo PromptOS"
+                width="160"
+                height="40"
+                class="brand__logo-badge"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
+          <p class="site-footer__desc">
+            Central organizada de prompts, kits por profissão e ferramentas guiadas para uso em IAs compatíveis.
+          </p>
+          <p class="site-footer__legal-id" id="footer-company-info">
+            PPMT / PromptOS • Dados empresariais (Razão Social / CNPJ) e canal oficial de suporte configuráveis para homologação antes da publicação comercial.
+          </p>
+        </div>
+
+        <div class="site-footer__links">
+          <h3 class="site-footer__heading">Documentos e Transparência</h3>
+          <ul>
+            <li>
+              <button type="button" class="footer-modal-link" data-modal-target="modal-termos">
+                Termos de Uso e Condições de Acesso
+              </button>
+            </li>
+            <li>
+              <button type="button" class="footer-modal-link" data-modal-target="modal-privacidade">
+                Política de Privacidade
+              </button>
+            </li>
+            <li>
+              <button type="button" class="footer-modal-link" data-modal-target="modal-reembolso">
+                Política de Compra e Reembolso (7 dias)
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="site-footer__support">
+          <h3 class="site-footer__heading">Atendimento e Suporte</h3>
+          <p class="site-footer__support-item">
+            E-mail de suporte: <a href="mailto:suporte@promptos.com.br" id="support-email-link">suporte@promptos.com.br</a>
+          </p>
+          <p class="site-footer__support-note">
+            Atendimento em dias úteis. Para solicitações de suporte ou reembolso dentro do prazo legal de 7 dias, informe o e-mail utilizado na compra.
+          </p>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© <span id="current-year">2026</span> PromptOS. Todos os direitos reservados.</p>
+        <p class="site-footer__disclaimer">
+          ChatGPT, Gemini e Claude são marcas registradas de seus respectivos proprietários (OpenAI, Google e Anthropic) e não possuem vínculo societário ou endosso comercial com o PromptOS.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODAL DE HOMOLOGAÇÃO DO CHECKOUT (Enquanto URL oficial não está ativa)
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-checkout-staging" role="dialog" aria-modal="true" aria-labelledby="modal-checkout-title" hidden>
+    <div class="modal-card">
+      <div class="modal-card__header">
+        <span class="modal-card__badge">AMBIENTE DE STAGING / HOMOLOGAÇÃO</span>
+        <button type="button" class="modal-close" data-modal-close aria-label="Fechar janela">✕</button>
+      </div>
+      <h3 class="modal-card__title" id="modal-checkout-title">
+        Acionamento do CTA validado com sucesso
+      </h3>
+      <p class="modal-card__text">
+        Você clicou em <strong>“QUERO ACESSAR O PROMPTOS”</strong> (origem: <code id="checkout-trigger-origin">hero</code>).
+      </p>
+      <div class="modal-card__info-box">
+        <p><strong>Produto:</strong> PromptOS Essencial (Pagamento único)</p>
+        <p><strong>Status do destino:</strong> Aguardando configuração da <code>CHECKOUT_URL</code> oficial homologada pelo responsável de checkout.</p>
+        <p><strong>Regra do Briefing respeitada:</strong> Nenhuma URL de pagamento inventada e nenhum upsell exibido na Landing Page.</p>
+      </div>
+      <div class="modal-card__actions">
+        <button type="button" class="btn-primary" data-modal-close>
+          Continuar validando a página
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAIS LEGAIS (TERMOS, PRIVACIDADE, REEMBOLSO)
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-termos" role="dialog" aria-modal="true" aria-labelledby="modal-termos-title" hidden>
+    <div class="modal-card modal-card--legal">
+      <div class="modal-card__header">
+        <span class="modal-card__badge">DOCUMENTO LEGAL</span>
+        <button type="button" class="modal-close" data-modal-close aria-label="Fechar janela">✕</button>
+      </div>
+      <h3 class="modal-card__title" id="modal-termos-title">Termos de Uso e Condições de Acesso — PromptOS Essencial</h3>
+      <div class="modal-card__scroll">
+        <h4>1. Objeto</h4>
+        <p>O PromptOS Essencial consiste no acesso à biblioteca digital organizada de prompts, coleções por profissão e ferramentas guiadas de estruturação de comandos para uso pelo próprio usuário em ferramentas externas de inteligência artificial compatíveis.</p>
+        <h4>2. Escopo e Limitações</h4>
+        <p>O PromptOS Essencial não executa tarefas automaticamente por conta própria, não fornece créditos de API e não inclui assinaturas pagas de plataformas de terceiros (tais como ChatGPT, Google Gemini ou Anthropic Claude).</p>
+        <h4>3. Pagamento Único e Acesso Vitalício ao Acervo Adquirido</h4>
+        <p>A licença de uso do PromptOS Essencial é concedida mediante pagamento único, sem cobrança de mensalidade obrigatória. O acesso vitalício refere-se à disponibilidade de consulta aos conteúdos integrantes do pacote PromptOS Essencial enquanto a plataforma estiver em operação comercial. Futuros produtos independentes, expansões ou módulos comercializados separadamente não fazem parte automática desta oferta.</p>
+        <h4>4. Uso Pessoal e Profissional</h4>
+        <p>O comprador pode utilizar os comandos personalizados em suas atividades profissionais, comerciais e de criação de conteúdo, sendo vedada a revenda, redistribuição pública ou clonagem comercial da biblioteca e da plataforma.</p>
+      </div>
+      <div class="modal-card__actions">
+        <button type="button" class="btn-secondary-copy" data-modal-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-privacidade" role="dialog" aria-modal="true" aria-labelledby="modal-privacidade-title" hidden>
+    <div class="modal-card modal-card--legal">
+      <div class="modal-card__header">
+        <span class="modal-card__badge">PRIVACIDADE E DADOS</span>
+        <button type="button" class="modal-close" data-modal-close aria-label="Fechar janela">✕</button>
+      </div>
+      <h3 class="modal-card__title" id="modal-privacidade-title">Política de Privacidade (LGPD)</h3>
+      <div class="modal-card__scroll">
+        <h4>1. Coleta Mínima na Landing Page</h4>
+        <p>Esta página de apresentação comercial não coleta dados de cartão de crédito, CPF ou senhas. Toda a etapa de pagamento ocorre exclusivamente no ambiente seguro do gateway de checkout homologado.</p>
+        <h4>2. Métricas de Navegação</h4>
+        <p>Utilizamos eventos agregados de desempenho e cliques de navegação (como visualização da página e acionamento do botão de compra) sem registrar informações pessoais sensíveis, textos privados ou identificadores financeiros em pixels de mídia.</p>
+        <h4>3. Direitos do Titular</h4>
+        <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode solicitar informações, correção ou exclusão de dados cadastrais a qualquer momento pelo canal oficial de suporte.</p>
+      </div>
+      <div class="modal-card__actions">
+        <button type="button" class="btn-secondary-copy" data-modal-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-reembolso" role="dialog" aria-modal="true" aria-labelledby="modal-reembolso-title" hidden>
+    <div class="modal-card modal-card--legal">
+      <div class="modal-card__header">
+        <span class="modal-card__badge">DIREITO DO CONSUMIDOR</span>
+        <button type="button" class="modal-close" data-modal-close aria-label="Fechar janela">✕</button>
+      </div>
+      <h3 class="modal-card__title" id="modal-reembolso-title">Política de Compra, Acesso e Reembolso</h3>
+      <div class="modal-card__scroll">
+        <h4>1. Liberação de Acesso</h4>
+        <p>O acesso à área de membros do PromptOS Essencial é enviado para o e-mail cadastrado imediatamente após a confirmação de pagamento pelo processador financeiro.</p>
+        <h4>2. Direito de Arrependimento em até 7 Dias</h4>
+        <p>Nos termos do Art. 49 do Código de Defesa do Consumidor (Lei nº 8.078/1990), o comprador tem o direito de desistir da contratação no prazo de até 7 (sete) dias corridos a contar da data da confirmação da compra.</p>
+        <h4>3. Como Solicitar Reembolso</h4>
+        <p>Dentro do prazo legal de 7 dias, basta enviar uma solicitação para o e-mail de suporte informado no rodapé (ou utilizar a opção de cancelamento da própria plataforma de checkout) informando o e-mail da compra para estorno integral do valor pago.</p>
+      </div>
+      <div class="modal-card__actions">
+        <button type="button" class="btn-secondary-copy" data-modal-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       EFEITO FOGOS DE CONFETES + CARD "PROMOÇÃO LIBERADA" (SEÇÃO 10)
+       ===================================================================== -->
+  <canvas class="promo-confetti-canvas" id="promo-confetti-canvas" aria-hidden="true"></canvas>
+
+  <div
+    class="promo-unlock-backdrop"
+    id="promo-unlock-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="promo-unlock-title"
+    hidden
+  >
+    <div class="promo-unlock-card">
+      <div class="promo-unlock-card__top">
+        <span class="promo-unlock-card__badge">🎉 PROMOÇÃO LIBERADA • 76% OFF</span>
+        <button
+          type="button"
+          class="promo-unlock-card__close"
+          id="btn-close-promo"
+          aria-label="Fechar aviso de promoção"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="promo-unlock-card__hero">
+        <div class="promo-unlock-card__mascot" aria-hidden="true">
+          <span class="promo-unlock-card__mascot-glow"></span>
+          <img
+            src="./assets/mascote-polvo-480.png"
+            alt=""
+            width="68"
+            height="60"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="promo-unlock-card__copy">
+          <h3 class="promo-unlock-card__title" id="promo-unlock-title">
+            Promoção Liberada!
+          </h3>
+          <p class="promo-unlock-card__desc">
+            Você desbloqueou o acesso completo ao <strong>PromptOS Essencial</strong> com condição especial:
+          </p>
+        </div>
+      </div>
+
+      <div class="promo-unlock-card__price-box">
+        <div class="offer-box__old-price-row">
+          <span>De</span>
+          <del class="offer-box__old-price">R$ 199,90</del>
+          <span>por apenas:</span>
+        </div>
+        <div class="offer-box__price-main-row">
+          <div class="offer-box__price-value">
+            <span class="offer-box__currency">R$</span>
+            <span class="offer-box__amount">47,90</span>
+          </div>
+          <span class="offer-box__discount-card">76% OFF</span>
+        </div>
+        <p class="offer-box__installments">
+          ou dividir em até <strong>12x de R$ 3,99</strong>
+        </p>
+      </div>
+
+      <div class="promo-unlock-timer" aria-label="Tempo restante da promoção">
+        <div class="promo-unlock-timer__label">
+          <span class="offer-box__timer-dot" aria-hidden="true"></span>
+          <span>ESTA OFERTA EXPIRA EM:</span>
+        </div>
+        <div class="promo-unlock-timer__clock">
+          <div class="promo-timer-box">
+            <span class="promo-timer-box__num" id="promo-min">09</span>
+            <span class="promo-timer-box__unit">MIN</span>
+          </div>
+          <span class="promo-timer-colon">:</span>
+          <div class="promo-timer-box">
+            <span class="promo-timer-box__num" id="promo-sec">59</span>
+            <span class="promo-timer-box__unit">SEG</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary promo-unlock-card__btn" id="btn-claim-promo">
+        <span>APROVEITAR PROMOÇÃO AGORA</span>
+        <svg class="btn-primary__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast de Feedback (Cópia de exemplo / interações) -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="./app.js?v=20261019c" defer></script>
+</body>
+</html>
